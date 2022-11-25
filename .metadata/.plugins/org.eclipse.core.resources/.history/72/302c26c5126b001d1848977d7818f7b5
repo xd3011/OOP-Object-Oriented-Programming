@@ -1,0 +1,13 @@
+
+public class swap_object_2 {
+	DigitalVideoDisc c;
+	public swap_object_2(DigitalVideoDisc c) {
+		this.c = c;
+	}
+	
+	public static void change(swap_object_2 obj1, swap_object_2 obj2) {
+		DigitalVideoDisc tmp = obj1.c;
+		obj1.c = obj2.c;
+		obj2.c = tmp;
+	}
+}

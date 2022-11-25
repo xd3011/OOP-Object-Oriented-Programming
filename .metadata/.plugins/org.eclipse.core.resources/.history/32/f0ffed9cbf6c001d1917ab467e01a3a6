@@ -1,0 +1,37 @@
+
+public class Store {
+	private DigitalVideoDisc itemsInStore[];
+	private int qtyOrdered = 0;
+	
+	public int getQtyOrdered() {
+		return qtyOrdered;
+	}
+
+	public void setQtyOrdered(int n) {
+		qtyOrdered += n ;
+	}
+
+	public void addDigitalVideoDisc(DigitalVideoDisc disc) {
+		if(this.getQtyOrdered() != 20) {
+			itemsOrdered[this.getQtyOrdered()] = disc;
+			setQtyOrdered(1);
+			System.out.println("The disc has been added");
+		}
+		else {
+			System.out.println("The cart is almost full");
+		}
+	}
+	
+	public void removeDigitalVideoDisc(DigitalVideoDisc disc) {
+		for(int i = 0; i < qtyOrdered; i++) {
+			if(itemsOrdered[i].getTitle() == disc.getTitle()) {
+				for(int j = i; j < qtyOrdered; j++) {
+					itemsOrdered[j] = itemsOrdered[j + 1];
+				}
+				i--;
+				setQtyOrdered(-1);
+				System.out.println("The disc has been removed");
+			}
+		}
+	}
+}
