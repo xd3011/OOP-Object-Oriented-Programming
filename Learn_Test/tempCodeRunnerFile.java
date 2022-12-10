@@ -1,1 +1,0 @@
-//Vòng lặp in ra 5 số ngẫu nhiên
