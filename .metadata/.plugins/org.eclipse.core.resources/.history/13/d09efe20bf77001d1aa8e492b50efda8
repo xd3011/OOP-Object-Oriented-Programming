@@ -1,0 +1,183 @@
+package hust.soict.dsai.aims;
+import java.util.Scanner;
+
+import hust.soict.dsai.aims.cart.Cart;
+import hust.soict.dsai.aims.media.Book;
+import hust.soict.dsai.aims.media.CompactDisc;
+import hust.soict.dsai.aims.media.DigitalVideoDisc;
+import hust.soict.dsai.aims.media.Media;
+import hust.soict.dsai.aims.media.Track;
+
+public class Aims {
+	public static void showMenu() {
+		System.out.println("AIMS: ");
+		System.out.println("--------------------------------");
+		System.out.println("1. View store");
+		System.out.println("2. Update store");
+		System.out.println("3. See current cart");
+		System.out.println("0. Exit");
+		System.out.println("--------------------------------");
+		System.out.println("Please choose a number: 0-1-2-3");
+	}
+	
+	public static void storeMenu() {
+		System.out.println("Options: ");
+		System.out.println("--------------------------------");
+		System.out.println("1. See a media’s details");
+		System.out.println("2. Add a media to cart");
+		System.out.println("3. Play a media");
+		System.out.println("4. See current cart");
+		System.out.println("0. Back");
+		System.out.println("--------------------------------");
+		System.out.println("Please choose a number: 0-1-2-3-4");
+	}
+	
+	public static void mediaDetailsMenu() {
+		System.out.println("Options: ");
+		System.out.println("--------------------------------");
+		System.out.println("1. Add to cart");
+		System.out.println("2. Play");
+		System.out.println("0. Back");
+		System.out.println("--------------------------------");
+		System.out.println("Please choose a number: 0-1-2");
+	}
+
+	public static void addToCart(Cart anOrder) {
+		System.out.println("Add item to the order");
+		System.out.println("What is the item type ?\n1. Book\n2. CD\n3. DVD");
+		Scanner sc = new Scanner(System.in);
+		int input1 = sc.nextInt();
+		if(input1 == 1) {
+			Media book = new Book();
+			System.out.println("Book title: " );
+			String title = sc.nextLine();
+//			Check book to Store and Add to Cart
+//			if(anOrder.search(title)) {
+//				
+//			}
+			book.setTitle(title);
+			System.out.println("Book category: " );
+			book.setCategory(sc.nextLine());
+			System.out.println("Book cost: " );
+			book.setCost(sc.nextFloat());
+			sc.nextLine();
+			System.out.println("Book id: ");
+			book.setId(sc.nextInt());
+			System.out.println("Book added");
+			anOrder.addMedia(book);
+		}
+		else if(input1 == 2) {
+			Media cd = new CompactDisc();
+			sc.nextLine();
+			System.out.println("CD artist: ");
+			cd.setArtist(sc.nextLine());
+			System.out.println("CD title: " );
+			String n=sc.nextLine();
+			cd.setTitle(n);
+			System.out.println("CD category: " );
+			cd.setCategory(sc.nextLine());
+			System.out.println("CD cost: " );
+			cd.setCost(sc.nextFloat());
+			sc.nextLine();
+			System.out.println("CD id: ");
+			cd.setId(sc.nextInt());
+			anOrder.addMedia(cd);
+			System.out.println("CD added");			
+		}
+		else if(input1 == 3) {
+			Media dvd = new DigitalVideoDisc();
+			sc.nextLine();
+			System.out.println("DVD title: " );
+			String m=sc.nextLine();
+			dvd.setTitle(m);
+			System.out.println("DVD category: " );
+			dvd.setCategory(sc.nextLine());
+			System.out.println("DVD cost: " );
+			dvd.setCost(sc.nextFloat());
+			sc.nextLine();
+			System.out.println("DVD id: ");
+			dvd.setId(sc.nextInt());
+			System.out.println("DVD length: ");
+			dvd.setLength(sc.nextInt());
+			System.out.println("DVD added");
+			anOrder.addMedia(dvd);
+			System.out.println("DVD added");
+		}
+		else System.out.println("Error");
+		sc.close();
+	}
+
+	public static void seeAMediaDetails(Cart anOrder) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("See A Media Details");
+		System.out.print("Media Title is: ");
+		String title = sc.nextLine();
+		System.out.println("");
+//		Check Media in Store and Print. But Store is null.
+//		if(anOrder.search(title)) {
+//			Print: Media in Store
+//		}
+		sc.close();
+	}
+	public static void menu_1(Cart anOrder) {
+		Scanner sc = new Scanner(System.in);
+		int k = sc.nextInt();
+		do {
+			switch (k){
+				case 0:
+					k = 0;
+					break;
+				case 1:
+					mediaDetailsMenu();	
+					break;
+				case 2:
+					addToCart(anOrder);
+					anOrder.printLength();
+					break;
+				case 3:
+					break;
+				case 4:
+					break;
+				default:
+					k = 0;
+					break;
+			}
+		} while(k == 0);
+		sc.close();
+	}
+	
+	public static void menu(Cart anOrder) {
+		Scanner sc = new Scanner(System.in);
+		int k = sc.nextInt();
+		do {
+			switch (k){
+				case 0:
+					k = 0;
+					System.out.println("Exit");
+					break;
+				case 1:
+					anOrder.printCart();
+					storeMenu();
+					menu_1(anOrder);
+					break;
+				case 2:
+					addToCart(anOrder);
+					anOrder.printLength();
+					break;
+				case 3:
+					break;
+				default:
+					k = 0;
+					break;
+			}
+		} while(k == 0);
+		sc.close();
+	}
+	
+	public static void main(String[] args) {
+		showMenu();
+		Cart anOrder = new Cart();
+		menu(anOrder);
+		// TODO Auto-generated method stub
+	}
+}
