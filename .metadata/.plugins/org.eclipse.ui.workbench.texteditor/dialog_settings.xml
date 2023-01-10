@@ -5,13 +5,22 @@
 		<item key="DIALOG_Y_ORIGIN" value="308"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="created"/>
+		<item key="selection" value="Remove"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="remove"/>
+			<item value="removeMediaFromCart"/>
+			<item value="play"/>
+			<item value="cart_menu_3"/>
+			<item value="removeToStore"/>
+			<item value="mediaDetailsMenu"/>
+			<item value="menu_2"/>
+			<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;"/>
+			<item value="stage"/>
 			<item value="created"/>
 			<item value="Track"/>
 			<item value="sort"/>
