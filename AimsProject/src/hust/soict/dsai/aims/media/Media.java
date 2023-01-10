@@ -1,12 +1,18 @@
 package hust.soict.dsai.aims.media;
 
 import java.util.Comparator;
+
+import hust.soict.dsai.aims.exception.PlayerException;
 public abstract class Media {
 	private int id;
 	private String title;
 	private String category;
 	private float cost;
 	
+	public static final Comparator<Media> COMPARE_BY_TITLE_COST = new MediaComparatorByTitleCost();
+	public static final Comparator<Media> COMPARE_BY_COST_TITLE = new MediaComparatorByCostTitle();
+	
+	// Constructor
 	public Media() {
 		// TODO Auto-generated constructor stub
 	}
@@ -18,6 +24,8 @@ public abstract class Media {
 		this.category = category;
 		this.cost = cost;
 	}
+	
+	// Getter and Setter	
 	public int getId() {
 		return id;
 	}
@@ -45,17 +53,25 @@ public abstract class Media {
 	
 	@Override
 	public boolean equals(Object o) {
-		Media tmp = (Media)o;
-		if(this.getTitle() == tmp.getTitle()) {
-			return true;
+		if (o instanceof Media) {
+			Media media = (Media)o;
+			return this.title.equals(media.title);
 		}
-		else return false;
+		return false;
 	}
 	
 	public abstract void setArtist(String artist);
 	public abstract String getArtist();
 	public abstract void setLength(int nextInt);
+
+	// Play Media	
+	public void playMedia() throws PlayerException{
+		// TODO Auto-generated method stub
+	}
 	
-	public static final Comparator<Media> COMPARE_BY_TITLE_COST = new MediaComparatorByTitleCost();
-	public static final Comparator<Media> COMPARE_BY_COST_TITLE = new MediaComparatorByCostTitle();
+	@Override
+	public String toString() {
+
+		return "Media - " + this.title + " - " + this.category + " - " + this.cost + " $";
+	}
 }

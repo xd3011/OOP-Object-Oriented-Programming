@@ -1,20 +1,23 @@
 package hust.soict.dsai.aims.store;
-import java.util.ArrayList;
+
+import javax.naming.LimitExceededException;
 
 import hust.soict.dsai.aims.media.Media;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class Store {
 	public static final int MAX_NUMBERS_DVD = 100;
-	private ArrayList<Media> itemsInStore = new ArrayList<Media>();
+	private ObservableList<Media> itemsInStore = FXCollections.observableArrayList();
 // 	Add Media to Store
-	public void addMedia(Media m) {
+	public void addMedia(Media m) throws LimitExceededException {
 		int size = itemsInStore.size();
-		if(size != 100) {
+		if(size < MAX_NUMBERS_DVD) {
 			itemsInStore.add(m);
 			System.out.println("The media has been added");
 		}
 		else {
-			System.out.println("The store is almost full");
+			throw new LimitExceededException("ERROR: The number of media has reached its limit");
 		}
 	}
 //	Remove Media to Store
@@ -44,6 +47,16 @@ public class Store {
 		}
 		return false;
 	}
+	//	
+	public Media searchTitle(String title) {
+		for(Media m: itemsInStore) {
+			if(m.getTitle() == title) {
+				return m;
+			}
+		}
+		return null;
+	}
+	
 	public void printStore() {
 		System.out.println("***********************STORE***********************");
 		int i = 1;
@@ -57,5 +70,8 @@ public class Store {
 			i++;
 		}
 		System.out.println("***************************************************");
+	}
+	public ObservableList<Media> getItemsInStore() {
+		return itemsInStore;
 	}
 }

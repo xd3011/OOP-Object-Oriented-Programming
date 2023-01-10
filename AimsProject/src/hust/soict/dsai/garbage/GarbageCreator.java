@@ -12,6 +12,7 @@ public class GarbageCreator {
 		
 		inputBytes = Files.readAllBytes(Paths.get(filename));
 		startTime = System.currentTimeMillis();
+		@SuppressWarnings("unused")
 		String outputString = "";
 		for(byte b : inputBytes) {
 			outputString += (char)b;

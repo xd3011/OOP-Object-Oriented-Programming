@@ -1,14 +1,16 @@
-package hust.soict.dsai.test.cart;
+package hust.soict.dsai.aims;
+
 import javax.naming.LimitExceededException;
 
 import hust.soict.dsai.aims.cart.Cart;
 import hust.soict.dsai.aims.media.DigitalVideoDisc;
 import hust.soict.dsai.aims.screen.CartScreen;
 
-public class CartTest {
+public class AimsUI {
 	public static void main(String[] args) throws LimitExceededException {
 		// Create a new Cart
 		Cart cart = new Cart();
+//		Store store = new Store(); Created store. But unused. 
 		// Create new dvd Object and add them to the Cart	
 			// Create new dvd1		
 		DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f);
@@ -29,3 +31,4 @@ public class CartTest {
 		CartScreen cs = new CartScreen(cart);
 	}
 }
+
